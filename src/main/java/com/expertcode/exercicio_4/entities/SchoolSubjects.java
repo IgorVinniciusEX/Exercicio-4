@@ -1,12 +1,15 @@
 package com.expertcode.exercicio_4.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,11 +23,13 @@ public class SchoolSubjects implements Serializable{
 	private Long id;
 	private String name;
 	
+	@ManyToMany(mappedBy = "listSchoolSubjects")
+	private List<Grid> listGrids = new ArrayList<>();
+	
 	public SchoolSubjects() {
 	}
 	
 	public SchoolSubjects(Long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}

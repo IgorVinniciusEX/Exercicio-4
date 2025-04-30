@@ -15,8 +15,26 @@ public class GridDTO {
 	public GridDTO() {
 	}
 	
-	public GridDTO(Grid result) {
-		result.getId();
-	}
+	/*public GridDTO(Grid result) {
+		this.id = result.getId();
+		this.list = result.getListSchoolSubjects();
+	}*/
 	
+	public GridDTO(Grid result) {
+		if(result.getListSchoolSubjects() != null) {
+			result.getListSchoolSubjects().forEach(x -> this.list.add(new SchoolSubjects()));
+		}
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<SchoolSubjects> getList() {
+		return list;
+	}
 }

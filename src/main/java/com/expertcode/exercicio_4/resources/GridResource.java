@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.expertcode.exercicio_4.entities.Grid;
+import com.expertcode.exercicio_4.entities.dto.GridDTO;
 import com.expertcode.exercicio_4.services.GridService;
 
 @RestController
@@ -36,7 +37,7 @@ public class GridResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Grid> insert(@RequestBody Grid obj){
+	public ResponseEntity<GridDTO> insert(@RequestBody GridDTO obj){
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
