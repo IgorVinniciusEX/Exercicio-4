@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    open-in-view: 'false'
+  application:
+    name: exercicio-4
+  profiles:
+    active: ${APP_PROFILE:test}
