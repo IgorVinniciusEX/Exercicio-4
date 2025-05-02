@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.expertcode.exercicio_4.entities.Grid;
 import com.expertcode.exercicio_4.entities.dto.GridDTO;
 import com.expertcode.exercicio_4.services.GridService;
 
@@ -31,8 +30,8 @@ public class GridResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Grid> findById(@PathVariable Long id){
-		Grid obj = service.findById(id);
+	public ResponseEntity<GridDTO> findById(@PathVariable Long id){
+		GridDTO obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	

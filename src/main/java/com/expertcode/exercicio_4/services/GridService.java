@@ -1,7 +1,6 @@
 package com.expertcode.exercicio_4.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,9 +29,9 @@ public class GridService {
 	}
 
 	@Transactional
-	public Grid findById(Long id) {
-		Optional<Grid> obj = repository.findById(id);
-		return obj.get();
+	public GridDTO findById(Long id) {
+		Grid obj = repository.findById(id).get();
+		return new GridDTO(obj);
 	}
 
 	@Transactional

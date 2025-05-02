@@ -27,15 +27,15 @@ e sempre deverá estar relacionada a algum aluno. > ok - ok
 
 Um aluno somente poderá ter uma grade de matéria. > ok - ok
 
-Implementar um serviço que exiba um histórico de todos os alunos com filtro por aluno opcional.
-
-Implementar um serviço que exiba os melhores alunos por score.
-
 Os alunos para concluir uma matéria deverão tirar 3 notas consecutivas maiores que 80%.
 
 Caso ele não atinja essa meta, ele voltará ao início da contagem.
 
 Depois de concluir uma matéria ele não poderá receber mais lançamentos de notas naquela matéria e deverá passar para a próxima matéria de sua grade.
+
+Implementar um serviço que exiba um histórico de todos os alunos com filtro por aluno opcional.
+
+Implementar um serviço que exiba os melhores alunos por score.
 
 Deve ser entregue a aplicação com testes de integração realizados e o diagrama do modelo de dados gerado.
 
