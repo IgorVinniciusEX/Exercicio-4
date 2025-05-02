@@ -2,27 +2,27 @@ package com.expertcode.exercicio_4.services;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.expertcode.exercicio_4.entities.Grid;
 import com.expertcode.exercicio_4.entities.SchoolSubjects;
 import com.expertcode.exercicio_4.entities.dto.GridDTO;
 import com.expertcode.exercicio_4.exceptions.InvalidQuantityException;
 import com.expertcode.exercicio_4.repositories.GridRepository;
-import com.expertcode.exercicio_4.repositories.SchoolSubjectsRepository;
 
 @Service
+@Transactional(readOnly = true)
 public class GridService {
 
 	@Autowired
-	GridRepository repository;
+	private GridRepository repository;
 	
 	@Autowired
-    private SchoolSubjectsRepository subjectRepository;
-
+	private SchoolSubjectsService subjectsService;
+	
 	public List<Grid> findAll() {
 		return repository.findAll();
 	}
@@ -32,23 +32,19 @@ public class GridService {
 		return obj.get();
 	}
 
-	public GridDTO insert(GridDTO obj) {
-		if(obj.getList() == null || obj.getList().size() < 5) {
-			throw new InvalidQuantityException(obj);
+	@Transactional
+	public Grid insert(GridDTO obj) {
+		List<SchoolSubjects> list = subjectsService.findByIdIn(obj.getListSchoolSubjects());
+		if(list == null || list.size() < 5) {
+			throw new InvalidQuantityException(list.size());
 		} 
-		Grid entity = new Grid();
-		entity.setId(obj.getId());
+		Grid grid = convertDTO(obj);
+		grid.setListSchoolSubjects(list);
 		
-		List<SchoolSubjects> subjectList = obj.getList().stream()
-	            .map(sub -> subjectRepository.findById(sub.getId())
-	                    .orElseThrow(() -> new RuntimeException("Subject not found: id=" + sub.getId())))
-	            .collect(Collectors.toList());
-
-	        entity.setListSchoolSubjects(subjectList);
-
-		
-		Grid saved = repository.save(entity);
-		
-		return new GridDTO(saved);
+		return repository.save(grid);
+	}
+	
+	public Grid convertDTO(GridDTO dto) { 
+		return new Grid(dto.getId(), dto.getName());
 	}
 }

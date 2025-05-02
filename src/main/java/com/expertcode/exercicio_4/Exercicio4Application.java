@@ -22,7 +22,7 @@ Implemente um serviço que cadastre alunos. Eles precisam ter nome. > ok - ok
 
 Implemente um serviço que cadastre uma grade escolar. > ok - teste 
 
-Uma grade deverá possuir no mínimo 5 matérias > ok - teste 
+Uma grade deverá possuir no mínimo 5 matérias > ok - ok
 e sempre deverá estar relacionada a algum aluno. > ok -  teste
 
 Um aluno somente poderá ter uma grade de matéria. > ok - teste

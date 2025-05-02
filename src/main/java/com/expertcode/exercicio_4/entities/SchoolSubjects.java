@@ -49,6 +49,10 @@ public class SchoolSubjects implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public List<Grid> getListGrids() {
+		return listGrids;
+	}
 
 	@Override
 	public int hashCode() {

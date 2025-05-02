@@ -37,9 +37,9 @@ public class GridResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<GridDTO> insert(@RequestBody GridDTO obj){
-		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).body(obj);
+	public ResponseEntity<Void> insert(@RequestBody GridDTO dto){
+		service.insert(dto);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
+		return ResponseEntity.created(uri).build();
 	}
 }

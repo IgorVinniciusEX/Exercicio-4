@@ -28,4 +28,8 @@ public class SchoolSubjectsService{
 	public SchoolSubjects insert(SchoolSubjects obj) {
 		return repository.save(obj);
 	}
+	
+	public List<SchoolSubjects> findByIdIn(List<Long> list){
+		return repository.findByIdIn(list);
+	}
 }

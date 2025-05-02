@@ -1,31 +1,23 @@
 package com.expertcode.exercicio_4.entities.dto;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import com.expertcode.exercicio_4.entities.Grid;
-import com.expertcode.exercicio_4.entities.SchoolSubjects;
 
 public class GridDTO {
 
 	private Long id;
+	private String name;
 	
-	private List<SchoolSubjects> list = new ArrayList<>();
+	private List<Long> listSchoolSubjects;
 	
 	public GridDTO() {
 	}
 	
-	/*public GridDTO(Grid result) {
-		this.id = result.getId();
-		this.list = result.getListSchoolSubjects();
-	}*/
-	
 	public GridDTO(Grid result) {
-		if(result.getListSchoolSubjects() != null) {
-			result.getListSchoolSubjects().forEach(x -> this.list.add(new SchoolSubjects()));
-		}
+		this.id = result.getId();
+		this.name = result.getName();
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -34,7 +26,19 @@ public class GridDTO {
 		this.id = id;
 	}
 
-	public List<SchoolSubjects> getList() {
-		return list;
+	public String getName() {
+		return name;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Long> getListSchoolSubjects() {
+		return listSchoolSubjects;
+	}
+
+	public void setListSchoolSubjects(List<Long> listSchoolSubjects) {
+		this.listSchoolSubjects = listSchoolSubjects;
+	}	
 }

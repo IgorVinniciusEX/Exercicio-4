@@ -37,8 +37,8 @@ public class TestConfig implements CommandLineRunner{
 		
 		schoolSubjectsRepository.saveAll(Arrays.asList(sc1, sc2, sc3, sc4, sc5, sc6));
 		
-		Grid g1 = new Grid(null);
-		Grid g2 = new Grid(null);
+		Grid g1 = new Grid(null, "Grade 1");
+		Grid g2 = new Grid(null, "Grade 2");
 		
 		g1.getListSchoolSubjects().addAll(Arrays.asList(sc1, sc2, sc3, sc4, sc5));
 		g2.getListSchoolSubjects().addAll(Arrays.asList(sc1, sc2, sc3, sc4));
