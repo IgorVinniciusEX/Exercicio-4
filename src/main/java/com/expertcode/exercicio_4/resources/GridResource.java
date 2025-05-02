@@ -25,8 +25,8 @@ public class GridResource {
 	private GridService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Grid>> findAll(){
-		List<Grid> list = service.findAll();
+	public ResponseEntity<List<GridDTO>> findAll(){
+		List<GridDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	

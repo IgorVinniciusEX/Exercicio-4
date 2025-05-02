@@ -23,12 +23,10 @@ public class GridService {
 	@Autowired
 	private SchoolSubjectsService subjectsService;
 	
-	/*@Autowired
-	private StudentService studentService;*/
-	
 	@Transactional
-	public List<Grid> findAll() {
-		return repository.findAll();
+	public List<GridDTO> findAll() {	
+		List<Grid> entity = repository.findAll();
+		return entity.stream().map(x -> new GridDTO(x)).toList();
 	}
 
 	@Transactional
@@ -44,14 +42,8 @@ public class GridService {
 			throw new InvalidQuantityException("SchoolSubjects",listSubject.size());
 		} 
 		
-		/*List<Student> listStudent = studentService.findByIdIn(obj.getListStudents());
-		if(listStudent.size() != 1) {
-			throw new InvalidQuantityException("Student", listStudent.size());
-		}*/
-		
 		Grid grid = convertDTO(obj);
 		grid.setListSchoolSubjects(listSubject);
-		//grid.setListStudents(listStudent);
 		
 		return repository.save(grid);
 	}

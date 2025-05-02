@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.expertcode.exercicio_4.entities.Grid;
+import com.expertcode.exercicio_4.entities.SchoolSubjects;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class GridDTO {
 
@@ -11,7 +13,7 @@ public class GridDTO {
 	
 	private List<Long> listSchoolSubjects = new ArrayList<>();
 	
-	//private List<Long> listStudents = new ArrayList<>();
+	private List<SchoolSubjects> schoolSubjects = new ArrayList<>();
 	
 	public GridDTO() {
 	}
@@ -19,6 +21,13 @@ public class GridDTO {
 	public GridDTO(Grid result) {
 		this.id = result.getId();
 		this.name = result.getName();
+		
+		if(listSchoolSubjects != null) {
+			for(SchoolSubjects s : result.getListSchoolSubjects()) {
+				this.listSchoolSubjects.add(s.getId());
+				this.schoolSubjects.add(s);
+			}
+		}
 	}
 	
 	public Long getId() {
@@ -37,6 +46,7 @@ public class GridDTO {
 		this.name = name;
 	}
 
+	@JsonIgnore
 	public List<Long> getListSchoolSubjects() {
 		return listSchoolSubjects;
 	}
@@ -45,11 +55,11 @@ public class GridDTO {
 		this.listSchoolSubjects = listSchoolSubjects;
 	}
 
-	/*public List<Long> getListStudents() {
-		return listStudents;
+	public List<SchoolSubjects> getSchoolSubjects() {
+		return schoolSubjects;
 	}
 
-	public void setListStudents(List<Long> listStudents) {
-		this.listStudents = listStudents;
-	}*/
+	public void setSchoolSubjects(List<SchoolSubjects> schoolSubjects) {
+		this.schoolSubjects = schoolSubjects;
+	}
 }

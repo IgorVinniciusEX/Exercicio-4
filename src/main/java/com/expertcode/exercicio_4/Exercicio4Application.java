@@ -25,7 +25,7 @@ Implemente um serviço que cadastre uma grade escolar. > ok - ok
 Uma grade deverá possuir no mínimo 5 matérias > ok - ok
 e sempre deverá estar relacionada a algum aluno. > ok - ok
 
-Um aluno somente poderá ter uma grade de matéria. > ok - teste
+Um aluno somente poderá ter uma grade de matéria. > ok - ok
 
 Implementar um serviço que exiba um histórico de todos os alunos com filtro por aluno opcional.
 
