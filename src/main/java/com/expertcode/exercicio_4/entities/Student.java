@@ -1,6 +1,8 @@
 package com.expertcode.exercicio_4.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -8,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -25,6 +29,12 @@ public class Student implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "grid_id")
 	private Grid grid;
+	
+	@ManyToMany
+	@JoinTable(name = "estudante_com_notas",
+			joinColumns = @JoinColumn(name = "student_id"),
+			inverseJoinColumns = @JoinColumn(name = "school_subject_id"))
+	private List<SchoolSubjects> listSchoolSubjects = new ArrayList<>();
 	
 	public Student() {
 	}
@@ -57,6 +67,10 @@ public class Student implements Serializable{
 
 	public void setGrid(Grid grid) {
 		this.grid = grid;
+	}
+
+	public List<SchoolSubjects> getListSchoolSubjects() {
+		return listSchoolSubjects;
 	}
 
 	@Override

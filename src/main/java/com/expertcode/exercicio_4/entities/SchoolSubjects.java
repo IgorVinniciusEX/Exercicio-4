@@ -25,6 +25,9 @@ public class SchoolSubjects implements Serializable{
 	private Long id;
 	private String name;
 	
+	@ManyToMany(mappedBy = "listSchoolSubjects")
+	private List<Student> listStudent = new ArrayList<>();
+	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "listSchoolSubjects")
 	private List<Grid> listGrids = new ArrayList<>();
