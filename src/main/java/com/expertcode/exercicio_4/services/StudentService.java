@@ -27,4 +27,8 @@ public class StudentService {
 	public Student insert(Student obj) {
 		return repository.save(obj);
 	}
+	
+	public List<Student> findByIdIn(List<Long> list){
+		return repository.findByIdIn(list);
+	}
 }

@@ -41,12 +41,13 @@ public class TestConfig implements CommandLineRunner{
 		Grid g2 = new Grid(null, "Grade 2");
 		
 		g1.getListSchoolSubjects().addAll(Arrays.asList(sc1, sc2, sc3, sc4, sc5));
-		g2.getListSchoolSubjects().addAll(Arrays.asList(sc1, sc2, sc3, sc4));
+		g2.getListSchoolSubjects().addAll(Arrays.asList(sc1, sc2, sc3, sc4, sc5, sc6));
 		
-		gridRepository.saveAll(Arrays.asList(g1,g2));
+		gridRepository.saveAll(Arrays.asList(g1, g2));
 		
 		Student s1 = new Student(null, "Igor Vinnicius", g1);
+		Student s2 = new Student(null, "Maria Aparecida", null);
 		
-		studentRepository.saveAll(Arrays.asList(s1));
+		studentRepository.saveAll(Arrays.asList(s1, s2));
 	}
 }

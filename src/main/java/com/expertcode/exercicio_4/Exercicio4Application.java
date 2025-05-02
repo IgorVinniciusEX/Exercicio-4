@@ -20,10 +20,10 @@ Implemente um serviço que cadastre matérias escolares. Elas precisam ter nome.
 
 Implemente um serviço que cadastre alunos. Eles precisam ter nome. > ok - ok
 
-Implemente um serviço que cadastre uma grade escolar. > ok - teste 
+Implemente um serviço que cadastre uma grade escolar. > ok - ok
 
 Uma grade deverá possuir no mínimo 5 matérias > ok - ok
-e sempre deverá estar relacionada a algum aluno. > ok -  teste
+e sempre deverá estar relacionada a algum aluno. > ok - ok
 
 Um aluno somente poderá ter uma grade de matéria. > ok - teste
 
