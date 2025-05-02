@@ -1,4 +1,4 @@
-package com.expertcode.exercicio_4.exceptions;
+package com.expertcode.exercicio_4.services.exceptions;
 
 public class InvalidQuantityException extends RuntimeException{
 

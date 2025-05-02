@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.expertcode.exercicio_4.entities.Student;
+import com.expertcode.exercicio_4.entities.dto.StudentDTO;
 import com.expertcode.exercicio_4.services.StudentService;
 
 @RestController
@@ -36,9 +37,9 @@ public class StudentResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Student> insert(@RequestBody Student obj){
-		obj = service.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody StudentDTO obj){
+		service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).body(obj);
+		return ResponseEntity.created(uri).build();
 	}
 }

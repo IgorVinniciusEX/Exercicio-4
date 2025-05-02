@@ -9,10 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.expertcode.exercicio_4.entities.Grid;
 import com.expertcode.exercicio_4.entities.SchoolSubjects;
-import com.expertcode.exercicio_4.entities.Student;
 import com.expertcode.exercicio_4.entities.dto.GridDTO;
-import com.expertcode.exercicio_4.exceptions.InvalidQuantityException;
 import com.expertcode.exercicio_4.repositories.GridRepository;
+import com.expertcode.exercicio_4.services.exceptions.InvalidQuantityException;
 
 @Service
 @Transactional(readOnly = true)
@@ -24,13 +23,15 @@ public class GridService {
 	@Autowired
 	private SchoolSubjectsService subjectsService;
 	
-	@Autowired
-	private StudentService studentService;
+	/*@Autowired
+	private StudentService studentService;*/
 	
+	@Transactional
 	public List<Grid> findAll() {
 		return repository.findAll();
 	}
 
+	@Transactional
 	public Grid findById(Long id) {
 		Optional<Grid> obj = repository.findById(id);
 		return obj.get();
@@ -43,13 +44,14 @@ public class GridService {
 			throw new InvalidQuantityException("SchoolSubjects",listSubject.size());
 		} 
 		
-		List<Student> listStudent = studentService.findByIdIn(obj.getListStudents());
+		/*List<Student> listStudent = studentService.findByIdIn(obj.getListStudents());
 		if(listStudent.size() != 1) {
 			throw new InvalidQuantityException("Student", listStudent.size());
-		}
+		}*/
 		
 		Grid grid = convertDTO(obj);
 		grid.setListSchoolSubjects(listSubject);
+		//grid.setListStudents(listStudent);
 		
 		return repository.save(grid);
 	}

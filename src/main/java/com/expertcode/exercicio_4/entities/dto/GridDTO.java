@@ -11,7 +11,7 @@ public class GridDTO {
 	
 	private List<Long> listSchoolSubjects = new ArrayList<>();
 	
-	private List<Long> listStudents = new ArrayList<>();
+	//private List<Long> listStudents = new ArrayList<>();
 	
 	public GridDTO() {
 	}
@@ -45,11 +45,11 @@ public class GridDTO {
 		this.listSchoolSubjects = listSchoolSubjects;
 	}
 
-	public List<Long> getListStudents() {
+	/*public List<Long> getListStudents() {
 		return listStudents;
 	}
 
 	public void setListStudents(List<Long> listStudents) {
 		this.listStudents = listStudents;
-	}
+	}*/
 }

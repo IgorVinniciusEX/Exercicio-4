@@ -73,6 +73,10 @@ public class Grid implements Serializable{
 		return listStudents;
 	}
 
+	public void setListStudents(List<Student> listStudents) {
+		this.listStudents = listStudents;
+	}
+
 	public void setListSchoolSubjects(List<SchoolSubjects> listSchoolSubjects) {
 		this.listSchoolSubjects = listSchoolSubjects;
 	}
