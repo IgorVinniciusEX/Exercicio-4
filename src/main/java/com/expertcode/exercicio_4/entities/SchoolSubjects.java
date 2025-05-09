@@ -1,5 +1,6 @@
 package com.expertcode.exercicio_4.entities;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Table(name = "tb_materia_escolar")
 public class SchoolSubjects implements Serializable, Convertible<SchoolSubjectsDTO> {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@EqualsAndHashCode.Include
@@ -29,9 +31,6 @@ public class SchoolSubjects implements Serializable, Convertible<SchoolSubjectsD
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-
-	@ManyToMany(mappedBy = "listSchoolSubjects")
-	private List<Student> listStudent = new ArrayList<>();
 
 	@JsonIgnore
 	@ManyToMany(mappedBy = "listSchoolSubjects")

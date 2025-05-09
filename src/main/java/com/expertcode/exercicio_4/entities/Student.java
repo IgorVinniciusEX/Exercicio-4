@@ -31,12 +31,6 @@ public class Student implements Serializable, Convertible<StudentDTO>{
 	@ManyToOne
 	@JoinColumn(name = "grid_id")
 	private Grid grid;
-	
-	@ManyToMany
-	@JoinTable(name = "estudante_com_notas",
-			joinColumns = @JoinColumn(name = "student_id"),
-			inverseJoinColumns = @JoinColumn(name = "school_subject_id"))
-	private List<SchoolSubjects> listSchoolSubjects = new ArrayList<>();
 
 	@OneToMany(mappedBy = "id.student")
 	private List<StudentNote> listNotes = new ArrayList<>();
