@@ -1,10 +1,12 @@
 package com.expertcode.exercicio_4.entities;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+import com.expertcode.exercicio_4.entities.dto.GridDTO;
+import com.expertcode.exercicio_4.util.Convertible;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -16,13 +18,23 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "tb_grade_escolar")
-public class Grid implements Serializable{
+public class Grid implements Serializable, Convertible<GridDTO>{
 
+	@Serial
 	private static final long serialVersionUID = 1L;
-	
+
+	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -30,42 +42,17 @@ public class Grid implements Serializable{
 
 	@OneToMany(mappedBy = "grid")
 	private List<Student> listStudents = new ArrayList<>();
-	
+
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "grade_com_materias",
 			joinColumns = @JoinColumn(name = "grid_id"),
 			inverseJoinColumns = @JoinColumn(name = "schoolSubjects_id"))
 	private List<SchoolSubjects> listSchoolSubjects = new ArrayList<>();
-	
-	public Grid() {
-		
-	}
-	
+
 	public Grid(Long id, String name) {
 		this.id = id;
 		this.name = name;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
 	}
 
 	@JsonIgnore
@@ -73,27 +60,8 @@ public class Grid implements Serializable{
 		return listStudents;
 	}
 
-	public void setListStudents(List<Student> listStudents) {
-		this.listStudents = listStudents;
-	}
-
-	public List<SchoolSubjects> getListSchoolSubjects() {
-		return listSchoolSubjects;
-	}
-
-	public void setListSchoolSubjects(List<SchoolSubjects> listSchoolSubjects) {
-		this.listSchoolSubjects = listSchoolSubjects;
-	}
-
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Grid other = (Grid) obj;
-		return Objects.equals(id, other.id);
+	public GridDTO convert() {
+		return new GridDTO(this);
 	}
 }

@@ -34,8 +34,8 @@ public class GridService {
 		return new GridDTO(obj);
 	}
 
-	@Transactional
-	public Grid insert(GridDTO obj) {
+	//	@Transactional
+	/*public Grid insert(GridDTO obj) {
 		List<SchoolSubjects> listSubject = subjectsService.findByIdIn(obj.getListSchoolSubjects());
 		if(listSubject == null || listSubject.size() < 5) {
 			throw new InvalidQuantityException("SchoolSubjects",listSubject.size());
@@ -45,7 +45,7 @@ public class GridService {
 		grid.setListSchoolSubjects(listSubject);
 		
 		return repository.save(grid);
-	}
+	}*/
 	
 	public Grid convertDTO(GridDTO dto) { 
 		return new Grid(dto.getId(), dto.getName());

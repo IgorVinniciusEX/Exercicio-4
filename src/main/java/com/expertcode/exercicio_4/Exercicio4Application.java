@@ -27,6 +27,8 @@ e sempre deverá estar relacionada a algum aluno. > ok - ok
 
 Um aluno somente poderá ter uma grade de matéria. > ok - ok
 
+Tabela aluno tem relação many-to-many entre matéria com dado adicional nota. -
+
 Os alunos para concluir uma matéria deverão tirar 3 notas consecutivas maiores que 80%.
 
 Caso ele não atinja essa meta, ele voltará ao início da contagem.

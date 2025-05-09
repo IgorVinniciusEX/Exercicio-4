@@ -2,6 +2,8 @@ package com.expertcode.exercicio_4.test;
 
 import java.util.Arrays;
 
+import com.expertcode.exercicio_4.entities.StudentNote;
+import com.expertcode.exercicio_4.repositories.StudentNoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +26,9 @@ public class TestConfig implements CommandLineRunner{
 	
 	@Autowired
 	private GridRepository gridRepository;
+
+	@Autowired
+	private StudentNoteRepository studentNoteRepository;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -49,5 +54,10 @@ public class TestConfig implements CommandLineRunner{
 		Student s2 = new Student(null, "Maria Aparecida", null);
 		
 		studentRepository.saveAll(Arrays.asList(s1, s2));
+
+		StudentNote sn1 = new StudentNote(s1, sc1, 30.0);
+		StudentNote sn2 = new StudentNote(s1, sc2, 60.0);
+
+		studentNoteRepository.saveAll(Arrays.asList(sn1, sn2));
 	}
 }

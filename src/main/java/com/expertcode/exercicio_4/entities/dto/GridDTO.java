@@ -6,6 +6,13 @@ import com.expertcode.exercicio_4.entities.Grid;
 import com.expertcode.exercicio_4.entities.SchoolSubjects;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class GridDTO {
 
 	private Long id;
@@ -14,9 +21,6 @@ public class GridDTO {
 	private List<Long> listSchoolSubjects = new ArrayList<>();
 	
 	private List<SchoolSubjects> schoolSubjects = new ArrayList<>();
-	
-	public GridDTO() {
-	}
 	
 	public GridDTO(Grid result) {
 		this.id = result.getId();
@@ -29,37 +33,13 @@ public class GridDTO {
 			}
 		}
 	}
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	@JsonIgnore
 	public List<Long> getListSchoolSubjects() {
 		return listSchoolSubjects;
 	}
 
-	public void setListSchoolSubjects(List<Long> listSchoolSubjects) {
-		this.listSchoolSubjects = listSchoolSubjects;
-	}
-
 	public List<SchoolSubjects> getSchoolSubjects() {
 		return schoolSubjects;
-	}
-
-	public void setSchoolSubjects(List<SchoolSubjects> schoolSubjects) {
-		this.schoolSubjects = schoolSubjects;
 	}
 }

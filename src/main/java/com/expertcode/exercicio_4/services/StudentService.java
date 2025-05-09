@@ -1,33 +1,28 @@
 package com.expertcode.exercicio_4.services;
 
 import java.util.List;
-import java.util.Optional;
 
+import com.expertcode.exercicio_4.services.exceptions.InvalidParameterException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.expertcode.exercicio_4.entities.Student;
 import com.expertcode.exercicio_4.entities.dto.StudentDTO;
 import com.expertcode.exercicio_4.repositories.StudentRepository;
-import com.expertcode.exercicio_4.services.exceptions.InvalidParameterException;
+import com.expertcode.exercicio_4.services.generics.ServiceGenerics;
 
 @Service
 @Transactional(readOnly = true)
-public class StudentService {
+public class StudentService implements ServiceGenerics<Student, StudentDTO, Long>{
 
 	@Autowired
 	StudentRepository repository;
-
-	@Transactional
-	public List<Student> findAll() {
-		return repository.findAll();
-	}
-
-	@Transactional
-	public Student findById(Long id) {
-		Optional<Student> obj = repository.findById(id);
-		return obj.get();
+	
+	@Override
+	public JpaRepository<Student, Long> getRepository() {
+		return repository;
 	}
 
 	@Transactional
