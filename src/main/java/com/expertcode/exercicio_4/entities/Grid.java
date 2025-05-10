@@ -29,7 +29,7 @@ import lombok.Setter;
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "tb_grade_escolar")
-public class Grid implements Serializable, Convertible<GridDTO>{
+public class Grid implements Serializable{
 
 	@Serial
 	private static final long serialVersionUID = 1L;
@@ -60,8 +60,4 @@ public class Grid implements Serializable, Convertible<GridDTO>{
 		return listStudents;
 	}
 
-	@Override
-	public GridDTO convert() {
-		return new GridDTO(this);
-	}
 }

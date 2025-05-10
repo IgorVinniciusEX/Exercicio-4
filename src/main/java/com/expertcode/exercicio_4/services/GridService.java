@@ -1,7 +1,9 @@
 package com.expertcode.exercicio_4.services;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.expertcode.exercicio_4.entities.mapper.GridMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,21 +23,24 @@ public class GridService {
 	
 	@Autowired
 	private SchoolSubjectsService subjectsService;
+
+	@Autowired
+	private GridMapper mapper;
 	
-	@Transactional
+	/*@Transactional
 	public List<GridDTO> findAll() {	
 		List<Grid> entity = repository.findAll();
 		return entity.stream().map(x -> new GridDTO(x)).toList();
-	}
+	}*/
 
 	@Transactional
 	public GridDTO findById(Long id) {
 		Grid obj = repository.findById(id).get();
-		return new GridDTO(obj);
+		return mapper.toGridDTO(obj);
 	}
 
-	//	@Transactional
-	/*public Grid insert(GridDTO obj) {
+	@Transactional
+	public Grid insert(GridDTO obj) {
 		List<SchoolSubjects> listSubject = subjectsService.findByIdIn(obj.getListSchoolSubjects());
 		if(listSubject == null || listSubject.size() < 5) {
 			throw new InvalidQuantityException("SchoolSubjects",listSubject.size());
@@ -45,7 +50,7 @@ public class GridService {
 		grid.setListSchoolSubjects(listSubject);
 		
 		return repository.save(grid);
-	}*/
+	}
 	
 	public Grid convertDTO(GridDTO dto) { 
 		return new Grid(dto.getId(), dto.getName());

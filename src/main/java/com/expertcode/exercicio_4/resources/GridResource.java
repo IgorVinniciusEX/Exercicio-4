@@ -23,11 +23,11 @@ public class GridResource {
 	@Autowired
 	private GridService service;
 	
-	@GetMapping
+	/*@GetMapping
 	public ResponseEntity<List<GridDTO>> findAll(){
 		List<GridDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
-	}
+	}*/
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<GridDTO> findById(@PathVariable Long id){
@@ -35,10 +35,10 @@ public class GridResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	/*@PostMapping
+	@PostMapping
 	public ResponseEntity<Void> insert(@RequestBody GridDTO dto){
 		service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).build();
-	}*/
+	}
 }

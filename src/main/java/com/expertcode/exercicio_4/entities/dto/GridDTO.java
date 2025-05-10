@@ -19,27 +19,5 @@ public class GridDTO {
 	private String name;
 	
 	private List<Long> listSchoolSubjects = new ArrayList<>();
-	
-	private List<SchoolSubjects> schoolSubjects = new ArrayList<>();
-	
-	public GridDTO(Grid result) {
-		this.id = result.getId();
-		this.name = result.getName();
-		
-		if(listSchoolSubjects != null) {
-			for(SchoolSubjects s : result.getListSchoolSubjects()) {
-				this.listSchoolSubjects.add(s.getId());
-				this.schoolSubjects.add(s);
-			}
-		}
-	}
 
-	@JsonIgnore
-	public List<Long> getListSchoolSubjects() {
-		return listSchoolSubjects;
-	}
-
-	public List<SchoolSubjects> getSchoolSubjects() {
-		return schoolSubjects;
-	}
 }

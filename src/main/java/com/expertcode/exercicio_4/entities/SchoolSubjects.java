@@ -36,6 +36,7 @@ public class SchoolSubjects implements Serializable, Convertible<SchoolSubjectsD
 	@ManyToMany(mappedBy = "listSchoolSubjects")
 	private List<Grid> listGrids = new ArrayList<>();
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "id.schoolSubjects")
 	private List<StudentNote> listNotes = new ArrayList<>();
 

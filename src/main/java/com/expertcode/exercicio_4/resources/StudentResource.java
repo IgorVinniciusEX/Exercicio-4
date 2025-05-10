@@ -1,16 +1,14 @@
 package com.expertcode.exercicio_4.resources;
 
-import java.net.URI;
-import java.util.List;
-
-import com.expertcode.exercicio_4.entities.Student;
+import com.expertcode.exercicio_4.entities.dto.StudentDTO;
+import com.expertcode.exercicio_4.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.expertcode.exercicio_4.entities.dto.StudentDTO;
-import com.expertcode.exercicio_4.services.StudentService;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/students")
